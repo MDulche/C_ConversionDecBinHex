@@ -94,5 +94,5 @@ int main()
     conversionDecToHex(decimal);
     return 0;
 
-    //A faire : Demande de conversion , dec-hex, hex-bin, hex-dec, bin-hex, ip, interface graphique
+    //A faire : Demande de conversion , hex-bin, hex-dec, bin-hex, ip, interface graphique
 }
