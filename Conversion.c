@@ -7,6 +7,7 @@ void conversionDecToBin(int decimal)
     int compteur = 7;
     int binaire[8] = {0,0,0,0,0,0,0,0};
     //Initialisation des variables 
+    
     while (decimal!=0)
     {
         binaire[compteur] = decimal % 2;
@@ -14,6 +15,7 @@ void conversionDecToBin(int decimal)
         compteur--;
     }
     //Calcul de Décimal à binaire par division successive de 2
+
     printf("[");
     for (compteur = 0; compteur < 8;compteur++)
     {
@@ -46,8 +48,8 @@ void conversionDecToHex(int decimal)
         decimal /= 16;
         compteur--;
     }
-
     //Calcul de Décimal à binaire par division successive de 16
+
     printf("[");    
     for (compteur = 0; compteur < 2;compteur++)
     {
@@ -93,6 +95,5 @@ int main()
     conversionDecToBin(decimal);
     conversionDecToHex(decimal);
     return 0;
-
-    //A faire : Demande de conversion , hex-bin, hex-dec, bin-hex, ip, interface graphique
 }
+//A faire : Demande de conversion , hex-bin, hex-dec, bin-hex, ip, interface graphique
