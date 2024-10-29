@@ -6,20 +6,31 @@ int conversionDecToBin(int decimal)
 {
     int compteur = 7;
     int binaire[8] = {0,0,0,0,0,0,0,0};
-
+    //Initialisation des variables 
     while (decimal!=0)
     {
         binaire[compteur] = decimal % 2;
-        printf("%d\n", binaire[compteur]);
         decimal /= 2;
-        printf("%d\n", decimal);
         compteur--;
     }
-
+    //Calcul de Décimal à binaire par division successive de 2
+    printf("[");
     for (compteur = 0; compteur < 8;compteur++)
     {
-        printf("%d", binaire[compteur]);
+        if (compteur != 7)
+        {
+            printf("%d", binaire[compteur]);
+            printf(" ");
+        }
+        else
+        {
+            printf("%d", binaire[compteur]);
+        }
+        
+        
     }
+    printf("]");
+    //Affichage du tableau binaire
 }
 
 int main()
@@ -33,6 +44,6 @@ int main()
     //Récupération de la valeur décimal (Base 10) à convertir.
 
     conversionDecToBin(decimal);
-    
+
     return 0;
 }
