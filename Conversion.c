@@ -38,8 +38,8 @@ void conversionBinToDec(char *binaireChar)
 {
     int indice;
     int decimal = 0;
+    //Initialisation des variables
 
-    // Calcul de la valeur décimale
     for (indice = 0; indice < 8; indice++)
     {
         if (binaireChar[indice] == '1')
@@ -47,7 +47,10 @@ void conversionBinToDec(char *binaireChar)
             decimal += (binaireChar[indice] - '0') * pow(2, 7 - indice);
         }
     }
-    printf("%d", decimal);
+    // Calcul de la valeur décimale
+
+    printf("\n%d", decimal);
+    //Affichage du decimal
 }
 
 void conversionDecToHex(int decimal)
@@ -119,30 +122,23 @@ int main()
         scanf("%d", &choix2);
         if (choix2 == 0)
         {
-            printf("Rentrer votre chiffre à convertir (0-255) : ");
+            printf("\nRentrer votre chiffre à convertir (0-255) : \n");
             scanf("%d", &decimal);
             conversionDecToBin(decimal);
         }
         if (choix2 == 1)
         {
-            printf("Rentrer votre binaire à convertir (0000 0000-1111 1111 rentrer en 8bit) : \n");
+            printf("\nRentrer votre binaire à convertir (0000 0000-1111 1111 rentrer en 8-bit) :\n\n");
             scanf("%s", binaireChaine);
             conversionBinToDec(& binaireChaine[0]); 
         }
 
     }
 
-
+    printf("\n\nAppuyez sur Entrée pour quitter...");
     getchar();
     getchar();
 
     return 0;
-    /*
-    conversionDecToBin(decimal);
-    conversionDecToHex(decimal);
-
-    printf("\n\nAppuyez sur Entrée pour quitter...");
-    */
-
 }
 //A faire : Demande de conversion , hex-bin, hex-dec, bin-hex, ip, interface graphique
