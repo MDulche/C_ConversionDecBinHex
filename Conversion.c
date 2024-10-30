@@ -84,13 +84,35 @@ void conversionDecToHex(int decimal)
 
 int main()
 {
-
+    printf("\nQuels conversion ? (Prendre le chiffre)\n\n 0. Conversion Total\n 1. Decimal/Binaire\n 2. Decimal/Hexadecimal\n 3. Binaire/Hexadecimal\n\n");
+    int choix1;
+    int choix2;
     int decimal;
+    scanf("%d", &choix1);
+    if (choix1 == 0)
+    {
+        /* code */
+    }
+    if (choix1 == 1)
+    {
+        printf("\nQuel sens ? (Prendre le chiffre)\n\n 0. Decimal --> Binaire\n 1. Binaire --> Decimal\n\n");
+        scanf("%d", &choix2);
+        if (choix2 == 0)
+        {
+            printf("Rentrer votre chiffre à convertir (0-255) : ");
+            scanf("%d", &decimal);
+            conversionDecToBin(decimal);
+        }
+        if (choix2 == 1)
+        {
+            /* printf("Rentrer votre binaire à convertir (0000 0000-1111 1111) : ");
+            scanf("%d", &binaire);
+            conversionBinToDec(decimal); */
+        }
 
-    printf("Rentrer votre chiffre à convertir (0-255) : ");
-    scanf("%d", &decimal);
+    }
 
-    //Récupération de la valeur décimal (Base 10) à convertir.
+    /*
 
     conversionDecToBin(decimal);
     conversionDecToHex(decimal);
@@ -98,6 +120,6 @@ int main()
     printf("\n\nAppuyez sur Entrée pour quitter...");
     getchar();
     getchar();
-    return 0;
+    return 0;*/
 }
 //A faire : Demande de conversion , hex-bin, hex-dec, bin-hex, ip, interface graphique
