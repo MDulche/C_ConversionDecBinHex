@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 void conversionDecToBin(int decimal)
 {
@@ -33,14 +34,18 @@ void conversionDecToBin(int decimal)
     //Affichage du tableau binaire
 }
 
-void conversionBinToDec(int *binaire)
+void conversionBinToDec(char *binaireChar)
 {
     int indice;
     int decimal = 0;
-    //Initialisation des variables
+
+    // Calcul de la valeur décimale
     for (indice = 0; indice < 8; indice++)
     {
-        decimal += binaire[indice]*pow(2, indice);
+        if (binaireChar[indice] == '1')
+        {
+            decimal += (binaireChar[indice] - '0') * pow(2, 7 - indice);
+        }
     }
     printf("%d", decimal);
 }
@@ -109,7 +114,7 @@ int main()
     }
     if (choix1 == 1)
     {
-        int binaire[8] = {0,0,0,0,0,0,0,0};
+        char binaireChaine[8];
         printf("\nQuel sens ? (Prendre le chiffre)\n\n 0. Decimal --> Binaire\n 1. Binaire --> Decimal\n\n");
         scanf("%d", &choix2);
         if (choix2 == 0)
@@ -120,25 +125,24 @@ int main()
         }
         if (choix2 == 1)
         {
-            printf("Rentrer votre binaire à convertir (0000 0000-1111 1111 rentrer en 8bit chiffre par chiffre) : \n");
-            for ( indice = 0; indice < 8; indice++)
-            {
-                scanf("%d", &temporaire);
-                binaire[indice] = temporaire;
-            }          
-            conversionBinToDec(&binaire[0]); 
+            printf("Rentrer votre binaire à convertir (0000 0000-1111 1111 rentrer en 8bit) : \n");
+            scanf("%s", binaireChaine);
+            conversionBinToDec(& binaireChaine[0]); 
         }
 
     }
 
-    /*
 
+    getchar();
+    getchar();
+
+    return 0;
+    /*
     conversionDecToBin(decimal);
     conversionDecToHex(decimal);
 
     printf("\n\nAppuyez sur Entrée pour quitter...");
-    getchar();
-    getchar();
-    return 0;*/
+    */
+
 }
 //A faire : Demande de conversion , hex-bin, hex-dec, bin-hex, ip, interface graphique
