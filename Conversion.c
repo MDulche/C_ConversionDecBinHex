@@ -16,7 +16,7 @@ void conversionDecToBin(int decimal)
     }
     //Calcul de Décimal à binaire par division successive de 2
 
-    printf("[");
+    printf("Binaire : [");
     for (compteur = 0; compteur < 8;compteur++)
     {
         if (compteur != 7)
@@ -29,7 +29,7 @@ void conversionDecToBin(int decimal)
             printf("%d", binaire[compteur]);
         }  
     }
-    printf("]");
+    printf("]\n");
     //Affichage du tableau binaire
 }
 
@@ -50,7 +50,7 @@ void conversionDecToHex(int decimal)
     }
     //Calcul de Décimal à binaire par division successive de 16
 
-    printf("[");    
+    printf("Hexadecimal : [");    
     for (compteur = 0; compteur < 2;compteur++)
     {
         if (hexadecimal[compteur]>=0 && hexadecimal[compteur]<=9)
@@ -78,7 +78,7 @@ void conversionDecToHex(int decimal)
             }
         }
     }
-    printf("]");  
+    printf("]\n");  
     //Affichage du tableau hexadecimal
 }
 
@@ -94,6 +94,10 @@ int main()
 
     conversionDecToBin(decimal);
     conversionDecToHex(decimal);
+
+    printf("\n\nAppuyez sur Entrée pour quitter...");
+    getchar();
+    getchar();
     return 0;
 }
 //A faire : Demande de conversion , hex-bin, hex-dec, bin-hex, ip, interface graphique
