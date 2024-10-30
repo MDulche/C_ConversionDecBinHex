@@ -33,6 +33,17 @@ void conversionDecToBin(int decimal)
     //Affichage du tableau binaire
 }
 
+void conversionBinToDec(int *binaire)
+{
+    int indice;
+    int total;
+    //Initialisation des variables
+    for (indice = 0; indice < 8; indice++)
+    {
+        total += binaire[indice]*pow(indice, 2);
+    }
+}
+
 void conversionDecToHex(int decimal)
 {
     int compteur = 1;
@@ -88,6 +99,8 @@ int main()
     int choix1;
     int choix2;
     int decimal;
+    int temporaire;
+    int indice;
     scanf("%d", &choix1);
     if (choix1 == 0)
     {
@@ -95,6 +108,7 @@ int main()
     }
     if (choix1 == 1)
     {
+        int binaire[8] = {0,0,0,0,0,0,0,0};
         printf("\nQuel sens ? (Prendre le chiffre)\n\n 0. Decimal --> Binaire\n 1. Binaire --> Decimal\n\n");
         scanf("%d", &choix2);
         if (choix2 == 0)
@@ -105,9 +119,18 @@ int main()
         }
         if (choix2 == 1)
         {
-            /* printf("Rentrer votre binaire à convertir (0000 0000-1111 1111) : ");
-            scanf("%d", &binaire);
-            conversionBinToDec(decimal); */
+            printf("Rentrer votre binaire à convertir (0000 0000-1111 1111 rentrer en 8bit chiffre par chiffre) : \n");
+            for ( indice = 0; indice < 8; indice++)
+            {
+                scanf("%d", &temporaire);
+                binaire[indice] = temporaire;
+            }
+            for ( indice = 0; indice < 8; indice++)
+            {
+                printf("%d", binaire[indice]);
+            }
+            
+            conversionBinToDec(&binaire[0]); 
         }
 
     }
