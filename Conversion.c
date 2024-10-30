@@ -36,12 +36,13 @@ void conversionDecToBin(int decimal)
 void conversionBinToDec(int *binaire)
 {
     int indice;
-    int total;
+    int decimal = 0;
     //Initialisation des variables
     for (indice = 0; indice < 8; indice++)
     {
-        total += binaire[indice]*pow(indice, 2);
+        decimal += binaire[indice]*pow(2, indice);
     }
+    printf("%d", decimal);
 }
 
 void conversionDecToHex(int decimal)
@@ -124,12 +125,7 @@ int main()
             {
                 scanf("%d", &temporaire);
                 binaire[indice] = temporaire;
-            }
-            for ( indice = 0; indice < 8; indice++)
-            {
-                printf("%d", binaire[indice]);
-            }
-            
+            }          
             conversionBinToDec(&binaire[0]); 
         }
 
