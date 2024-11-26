@@ -20,15 +20,11 @@ void conversionDecToBin(int decimal)
     printf("Binaire : [");
     for (compteur = 0; compteur < 8;compteur++)
     {
-        if (compteur != 7)
+        printf("%d", binaire[compteur]);
+        if (compteur < 7)
         {
-            printf("%d", binaire[compteur]);
             printf(" ");
         }
-        else
-        {
-            printf("%d", binaire[compteur]);
-        }  
     }
     printf("]\n");
     //Affichage du tableau binaire
@@ -38,9 +34,25 @@ void conversionBinToDec(char *binaireChar)
 {
     int indice;
     int decimal = 0;
+    int length = strlen(binaireChar);
     //Initialisation des variables
 
-    for (indice = 0; indice < 8; indice++)
+    if (length != 8)
+    {
+        printf("La chaîne binaire doit contenir exactement 8 caractères.\n");
+        return;
+    }
+    
+
+    for (indice = 0; indice < length; indice++) {
+        if (binaireChar[indice] != '0' && binaireChar[indice] != '1') {
+            printf("La chaîne binaire doit contenir uniquement des '0' et des '1'.\n");
+            return;
+        }
+    }
+    //Vérification du tableau
+
+    for (indice = 0; indice < length; indice++)
     {
         if (binaireChar[indice] == '1')
         {
@@ -55,6 +67,12 @@ void conversionBinToDec(char *binaireChar)
 
 void conversionDecToHex(int decimal)
 {
+    if (decimal < 0 || decimal > 255) {
+        printf("Le nombre décimal doit être compris entre 0 et 255.\n");
+        return;
+    }
+    //verification du decimal
+
     int compteur = 1;
     char hexadecimal[2];
     char comptage[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
@@ -70,69 +88,61 @@ void conversionDecToHex(int decimal)
     }
     //Calcul de Décimal à binaire par division successive de 16
 
-    printf("Hexadecimal : [");    
-    for (compteur = 0; compteur < 2;compteur++)
+    printf("Hexadecimal : [");
+    for (compteur = 0; compteur < 2; compteur++)
     {
-        if (hexadecimal[compteur]>=0 && hexadecimal[compteur]<=9)
-        {
-            if (compteur != 1)
-            {
-                printf("%d", hexadecimal[compteur]);
-                printf(" ");
-            }
-            else
-            {
-                printf("%d", hexadecimal[compteur]);
-            }
-        }
-        else
-        {
-            if (compteur != 1)
-            {
-                printf("%c", hexadecimal[compteur]);
-                printf(" ");
-            }
-            else
-            {
-                printf("%c", hexadecimal[compteur]);
-            }
+        printf("%c", hexadecimal[compteur]);
+        if (compteur < 1) {
+            printf(" ");
         }
     }
-    printf("]\n");  
+    printf("]\n");
     //Affichage du tableau hexadecimal
 }
 
 int main()
 {
-    printf("\nQuels conversion ? (Prendre le chiffre)\n\n 0. Conversion Total\n 1. Decimal/Binaire\n 2. Decimal/Hexadecimal\n 3. Binaire/Hexadecimal\n\n");
+    printf("\nQuelle conversion ? (Prendre le chiffre)\n\n 0. Conversion Total\n 1. Decimal/Binaire\n 2. Decimal/Hexadecimal\n 3. Binaire/Hexadecimal\n\n");
     int choix1;
     int choix2;
     int decimal;
-    int temporaire;
-    int indice;
+    char binaireChaine[9]; // 8 bits + 1 pour le caractère nul
+
     scanf("%d", &choix1);
     if (choix1 == 0)
     {
-        /* code */
+        // Code pour la conversion totale
     }
-    if (choix1 == 1)
+    else if (choix1 == 1)
     {
-        char binaireChaine[8];
         printf("\nQuel sens ? (Prendre le chiffre)\n\n 0. Decimal --> Binaire\n 1. Binaire --> Decimal\n\n");
         scanf("%d", &choix2);
         if (choix2 == 0)
         {
-            printf("\nRentrer votre chiffre à convertir (0-255) : \n");
+            printf("\nEntrez votre chiffre à convertir (0-255) : \n");
             scanf("%d", &decimal);
             conversionDecToBin(decimal);
         }
-        if (choix2 == 1)
+        else if (choix2 == 1)
         {
-            printf("\nRentrer votre binaire à convertir (0000 0000-1111 1111 rentrer en 8-bit) :\n\n");
+            printf("\nEntrez votre binaire à convertir (0000 0000-1111 1111 en 8 bits) :\n\n");
             scanf("%s", binaireChaine);
-            conversionBinToDec(& binaireChaine[0]); 
+            conversionBinToDec(binaireChaine);
         }
-
+        else
+        {
+            printf("Choix invalide.\n");
+        }
+    }
+    else if (choix1 == 2)
+    {
+        printf("\nEntrez votre chiffre à convertir (0-255) : \n");
+        scanf("%d", &decimal);
+        conversionDecToHex(decimal);
+    }
+    else
+    {
+        printf("Choix invalide.\n");
     }
 
     printf("\n\nAppuyez sur Entrée pour quitter...");
@@ -141,6 +151,7 @@ int main()
 
     return 0;
 }
+
 //A faire : Demande de conversion , hex-bin, hex-dec, bin-hex, ip, interface graphique
 
 //          & & %@@*/*/
