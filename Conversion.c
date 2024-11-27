@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-
+ 
 void conversionDecToBin(int decimal)
 {
     int compteur = 7;
     int binaire[8] = {0,0,0,0,0,0,0,0};
-    //Initialisation des variables 
-    
+    //Initialisation des variables
+   
     while (decimal!=0)
     {
         binaire[compteur] = decimal % 2;
@@ -16,7 +16,7 @@ void conversionDecToBin(int decimal)
         compteur--;
     }
     //Calcul de Décimal à binaire par division successive de 2
-
+ 
     printf("Binaire : [");
     for (compteur = 0; compteur < 8;compteur++)
     {
@@ -29,21 +29,21 @@ void conversionDecToBin(int decimal)
     printf("]\n");
     //Affichage du tableau binaire
 }
-
+ 
 void conversionBinToDec(char *binaireChar)
 {
     int indice;
     int decimal = 0;
     int length = strlen(binaireChar);
     //Initialisation des variables
-
+ 
     if (length != 8)
     {
         printf("La chaîne binaire doit contenir exactement 8 caractères.\n");
         return;
     }
-    
-
+   
+ 
     for (indice = 0; indice < length; indice++) {
         if (binaireChar[indice] != '0' && binaireChar[indice] != '1') {
             printf("La chaîne binaire doit contenir uniquement des '0' et des '1'.\n");
@@ -51,7 +51,7 @@ void conversionBinToDec(char *binaireChar)
         }
     }
     //Vérification du tableau
-
+ 
     for (indice = 0; indice < length; indice++)
     {
         if (binaireChar[indice] == '1')
@@ -60,11 +60,16 @@ void conversionBinToDec(char *binaireChar)
         }
     }
     // Calcul de la valeur décimale
-
+ 
     printf("\n%d", decimal);
     //Affichage du decimal
 }
-
+ 
+void conversionBinToHex()
+{
+   
+}
+ 
 void conversionDecToHex(int decimal)
 {
     if (decimal < 0 || decimal > 255) {
@@ -72,13 +77,13 @@ void conversionDecToHex(int decimal)
         return;
     }
     //verification du decimal
-
+ 
     int compteur = 1;
     char hexadecimal[2];
     char comptage[16] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
     int indiceComptage;
-    //Initialisation des variables 
-
+    //Initialisation des variables
+ 
     while (decimal!=0)
     {
         indiceComptage = decimal % 16;
@@ -87,7 +92,7 @@ void conversionDecToHex(int decimal)
         compteur--;
     }
     //Calcul de Décimal à binaire par division successive de 16
-
+ 
     printf("Hexadecimal : [");
     for (compteur = 0; compteur < 2; compteur++)
     {
@@ -99,7 +104,7 @@ void conversionDecToHex(int decimal)
     printf("]\n");
     //Affichage du tableau hexadecimal
 }
-
+ 
 int main()
 {
     printf("\nQuelle conversion ? (Prendre le chiffre)\n\n 0. Conversion Total\n 1. Decimal/Binaire\n 2. Decimal/Hexadecimal\n 3. Binaire/Hexadecimal\n\n");
@@ -107,7 +112,7 @@ int main()
     int choix2;
     int decimal;
     char binaireChaine[9]; // 8 bits + 1 pour le caractère nul
-
+ 
     scanf("%d", &choix1);
     if (choix1 == 0)
     {
@@ -144,16 +149,16 @@ int main()
     {
         printf("Choix invalide.\n");
     }
-
+ 
     printf("\n\nAppuyez sur Entrée pour quitter...");
     getchar();
     getchar();
-
+ 
     return 0;
 }
-
+ 
 //A faire : Demande de conversion , hex-bin, hex-dec, bin-hex, ip, interface graphique
-
+ 
 //          & & %@@*/*/
 //        % @.  %@@@@*@*@&@
 //     ,#/@@%@@@%@@  *,*/&/@@
