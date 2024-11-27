@@ -26,7 +26,7 @@ int main()
     int choix2;
     int decimal;
     char binaireChaine[9]; // 8 bits + 1 pour le caractère nul*
-    char tableau_binaire[8];
+    char tableauBinaire[8];
  
     scanf("%d", &choix1);
     if (choix1 == 0)
@@ -47,7 +47,7 @@ int main()
             //Conversion de la variable
 
             printf("Binaire : [");
-            affichage(tableau_binaire, 8);
+            affichage(tableauBinaire, 8);
             printf("]\n");
             //Affichage
         }
@@ -57,10 +57,10 @@ int main()
             scanf("%s", binaireChaine);
             //recupération de la variable
 
-            conversionBinToDec(binaireChaine);
-            //Conversion de la variable
+            printf("\n%d", conversionBinToDec(binaireChaine));
+            //Conversion de la variable, Affichage
 
-            
+
         }
         else
         {

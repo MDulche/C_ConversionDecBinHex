@@ -48,7 +48,7 @@ void conversionDecToBin(int decimal)
     //Affichage du tableau binaire
 }
  
-void conversionBinToDec(char *binaireChar)
+int conversionBinToDec(char *binaireChar)
 {
     int indice;
     char decimal = 0;
@@ -79,9 +79,7 @@ void conversionBinToDec(char *binaireChar)
         
     }
     // Calcul de la valeur décimale
- 
-    printf("\n%d", decimal);
-    //Affichage du decimal
+    return decimal;
 }
  
 void conversionBinToHex()
