@@ -18,10 +18,12 @@ int main()
     {
         // Code pour la conversion totale
     }
-    else if (choix1 == 1)
+    else if (choix1 == 1)//DecBin
     {
-        printf("\nQuel sens ? (Prendre le chiffre)\n\n 0. Decimal --> Binaire\n 1. Binaire --> Decimal\n\n");
-        scanf("%d", &choix2);
+        choix:
+            printf("\nQuel sens ? (Prendre le chiffre)\n\n 0. Decimal --> Binaire\n 1. Binaire --> Decimal\n\n");
+            scanf("%d", &choix2);
+
         if (choix2 == 0)//Decimal --> Binaire
         {
             do
@@ -42,8 +44,8 @@ int main()
                 {
                     securite = false;
                 }
-                //Condition de sécurité
             } while (securite);
+            //Condition de sécurité
 
             conversionDecToBin(decimal, tableauBinaire);
             //Conversion de la variable
@@ -57,6 +59,10 @@ int main()
         {
             do
             {
+                printf("\nEntrez votre binaire à convertir (0000 0000-1111 1111 en 8 bits) :\n\n");
+                scanf("%s", binaireChaine);
+                //recupération de la variable
+
                 securite = 1;
                 if (strlen(binaireChaine) > 8)
                 {
@@ -68,16 +74,10 @@ int main()
                 }
                 else
                 {
-                    securite = 0;
+                    securite = false;
                 }
-                
-                printf("\nEntrez votre binaire à convertir (0000 0000-1111 1111 en 8 bits) :\n\n");
-                scanf("%s", binaireChaine);
-                //recupération de la variable
-                
-            } while (securite == 1);
-            
-            
+            } while (securite);
+            //Condition de sécurité
 
             printf("\n%d", conversionBinToDec(binaireChaine));
             //Conversion de la variable, Affichage
@@ -85,6 +85,7 @@ int main()
         else// Erreur de choix DecBin
         {
             printf("Choix invalide.\n");
+            goto choix;
         }
     }
     else if (choix1 == 2)// Decimal --> Hexadecimal
