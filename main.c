@@ -1,23 +1,7 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
 #include "conversion.h"
-
-void tttt(int decimal, int *tableau);
-
-
-void affichage(char *tableau, int longueur)
-{
-    printf("[");
-    for (int compteur = 0; compteur < longueur; compteur++)
-    {
-        printf("%d", tableau[compteur]);
-        if (compteur < longueur - 1)
-        {
-            printf(" ");
-        }
-    }
-    printf("]\n");
-
-}
 
 int main()
 {
@@ -25,8 +9,9 @@ int main()
     int choix1;
     int choix2;
     int decimal;
-    char binaireChaine[9]; // 8 bits + 1 pour le caractère nul*
-    char tableauBinaire[8];
+    bool securite = true;
+    char binaireChaine[8];
+    char tableauBinaire[8] = {0, 0, 0, 0, 0, 0, 0, 0};
  
     scanf("%d", &choix1);
     if (choix1 == 0)
@@ -37,13 +22,30 @@ int main()
     {
         printf("\nQuel sens ? (Prendre le chiffre)\n\n 0. Decimal --> Binaire\n 1. Binaire --> Decimal\n\n");
         scanf("%d", &choix2);
-        if (choix2 == 0)
+        if (choix2 == 0)//Decimal --> Binaire
         {
-            printf("\nEntrez votre chiffre à convertir (0-255) : \n");
-            scanf("%d", &decimal);
-            //recupération de la variable
+            do
+            {
+                printf("\nEntrez votre chiffre entier à convertir (0-255) : \n");
+                scanf("%d", &decimal);
+                //Demande de la variable a l'utilisateur
 
-            conversionDecToBin(decimal);
+                if (decimal < 0)
+                {
+                    printf("Le convertisseur ne prend pas les chiffres négatifs\n");
+                }
+                else if (decimal > 255)
+                {
+                    printf("Le convertisseur ne prend pas les chiffres aux dessus de 255\n");
+                }
+                else
+                {
+                    securite = false;
+                }
+                //Condition de sécurité
+            } while (securite);
+
+            conversionDecToBin(decimal, tableauBinaire);
             //Conversion de la variable
 
             printf("Binaire : [");
@@ -51,36 +53,50 @@ int main()
             printf("]\n");
             //Affichage
         }
-        else if (choix2 == 1)
+        else if (choix2 == 1)// Binaire --> Decimal
         {
-            printf("\nEntrez votre binaire à convertir (0000 0000-1111 1111 en 8 bits) :\n\n");
-            scanf("%s", binaireChaine);
-            //recupération de la variable
+            do
+            {
+                securite = 1;
+                if (strlen(binaireChaine) > 8)
+                {
+                    printf("Le binaire que vous avez rentrez est trop grand\n");
+                }
+                else if (strlen(binaireChaine) < 8)
+                {
+                    printf("Le binaire que vous avez rentrez est trop petit (n'oubliez pas les zeros devant)\n");
+                }
+                else
+                {
+                    securite = 0;
+                }
+                
+                printf("\nEntrez votre binaire à convertir (0000 0000-1111 1111 en 8 bits) :\n\n");
+                scanf("%s", binaireChaine);
+                //recupération de la variable
+                
+            } while (securite == 1);
+            
+            
 
             printf("\n%d", conversionBinToDec(binaireChaine));
             //Conversion de la variable, Affichage
-
-
         }
-        else
+        else// Erreur de choix DecBin
         {
             printf("Choix invalide.\n");
         }
     }
-    else if (choix1 == 2)
+    else if (choix1 == 2)// Decimal --> Hexadecimal
     {
         printf("\nEntrez votre chiffre à convertir (0-255) : \n");
         scanf("%d", &decimal);
         conversionDecToHex(decimal);
     }
-    else
+    else// Erreur de choix DecHex
     {
         printf("Choix invalide.\n");
     }
- 
-    printf("\n\nAppuyez sur Entrée pour quitter...");
-    getchar();
-    getchar();
  
     return 0;
 }

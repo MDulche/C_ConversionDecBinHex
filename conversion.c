@@ -7,23 +7,19 @@
 
 void affichage(char *tableau, int longueur)
 {
-    for (int compteur = 0; compteur < longueur;compteur++)
+    for (int compteur = 0; compteur < longueur; compteur++)
     {
         printf("%d", tableau[compteur]);
-        if (compteur < (longueur-1))
+        if (compteur < longueur - 1)
         {
             printf(" ");
         }
     }
-    //Affichage du tableau binaire
 }
 
-void conversionDecToBin(int decimal)
+void conversionDecToBin(int decimal,char *binaire)
 {
     int compteur = 7;
-    int binaire[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-
-    assert(decimal >= 0 && decimal <= 255);
 
     //Initialisation des variables
    
@@ -34,18 +30,6 @@ void conversionDecToBin(int decimal)
         compteur--;
     }
     //Calcul de Décimal à binaire par division successive de 2
- 
-    printf("Binaire : [");
-    for (compteur = 0; compteur < 8;compteur++)
-    {
-        printf("%d", binaire[compteur]);
-        if (compteur < 7)
-        {
-            printf(" ");
-        }
-    }
-    printf("]\n");
-    //Affichage du tableau binaire
 }
  
 int conversionBinToDec(char *binaireChar)
@@ -54,21 +38,6 @@ int conversionBinToDec(char *binaireChar)
     char decimal = 0;
     int length = strlen(binaireChar);
     //Initialisation des variables
- 
-    if (length != 8)
-    {
-        printf("La chaîne binaire doit contenir exactement 8 caractères.\n");
-        return;
-    }
-   
- 
-    for (indice = 0; indice < length; indice++) {
-        if (binaireChar[indice] != '0' && binaireChar[indice] != '1') {
-            printf("La chaîne binaire doit contenir uniquement des '0' et des '1'.\n");
-            return;
-        }
-    }
-    //Vérification du tableau
  
     for (indice = 0; indice < length; indice++)
     {
